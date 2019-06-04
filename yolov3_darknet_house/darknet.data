@@ -1,0 +1,7 @@
+classes = 1
+train  = ./house_train.txt
+valid  = ./house_test.txt
+names = ./classes.names
+backup = ./weights/
+
+

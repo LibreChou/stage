@@ -1,0 +1,1 @@
+annotations des images téléchargées depuis openimages avec getDataFromOpenImages_house.py
