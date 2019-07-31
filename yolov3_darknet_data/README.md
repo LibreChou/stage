@@ -1,48 +1,65 @@
 Training YOLOv3 Object Detector - HTML Drawings
 
-1. Install awscli
+`cd darknet`
 
-`sudo pip3 install awscli` 
-
-2. Get the relevant OpenImages files needed to locate images of our interest
-
-`wget https://storage.googleapis.com/openimages/2018_04/class-descriptions-boxable.csv`
-
-`wget https://storage.googleapis.com/openimages/2018_04/train/train-annotations-bbox.csv`
-
-3. Download the images from OpenImagesV4
-
-`python3 getDataFromOpenImages_snowman.py`
-
-4. Create the train-test split
+1. Create the train-test split
 
 `python3 splitTrainAndTest.py JPEGImages`
 
-The 'labels' folder should be in the same directory as the JPEGImages folder.
+The 'labels' folder should be in the same directory as the 'JPEGImages' folder.
 
-5. Install Darknet and compile it.
+2. Compile darknet, the framework already installed from https://github.com/pjreddie/darknet
+
 ```
-cd ~
-git clone https://github.com/pjreddie/darknet
-cd darknet
+make clean
 make
 ```
-6. Get the pretrained model
+You can modify 'Makefile' to set GPU to 1 if you have a GPU.
+
+3. Get the pretrained model
+
 ```
 wget https://pjreddie.com/media/files/yolov3-tiny.weights
 ./darknet partial cfg/yolov3-tiny.cfg yolov3-tiny.weights yolov3-tiny.conv.15 15
 ```
-7. Fill in correct paths in the darknet.data file
 
-8. Start the training as below, by giving the correct paths to all the files being used as arguments
+4. Fill in correct paths in the 'darknet.data' file
+
+5. Start the training as below, by giving the correct paths to all the files being used as arguments
 
 ```
 ./darknet detector train darknet.data yolov3-tiny-data.cfg yolov3-tiny.conv.15 > train.log
 python3 plotTrainLoss.py train.log
 ```
 
-9. Give the correct path to the modelConfiguration and modelWeights files in object_detection_yolo.py and test any image or video for snowman detection, e.g.
+6. Evaluate your model
 
-`python3 object_detection_yolo.py --image=imageToDetect.jpg`
-`python3 object_detection_yolo.py --video=videoToDetect.mp4`
+```
+./darknet detector valid darknet.data yolov3-tiny-data.cfg weights/yolov3-tiny-data_final.weights
+./darknet detector recall darknet.data yolov3-tiny-data.cfg weights/yolov3-tiny-data_final.weights
+mkdir data_val
+jupyter notebook fill_data_val.ipynb
+./mean_average_precision.sh
+```
+mAP results are stored in 'mAP.txt'
 
+7. Test your model 
+
+```
+./darknet detector train darknet.data yolov3-tiny-data.cfg weights/yolov3-tiny-data_final.weights imageToTest.jpg -out Yolo_files/predictions
+```
+
+8. Now use your model on your webcam
+
+```
+./darknet detector demo darknet.data yolov3-tiny-data.cfg weights/yolov3-tiny-data_final.weights
+```
+Predictions are stored in 'yolo_predictions'
+
+9. While predicting frames from your webcam, run YOLOProject.ipynb to generate 'index.html' 
+
+```
+jupyter notebook YOLOProject.ipynb
+npm install -g browser-sync
+browser-sync start --server -w index.html
+```
