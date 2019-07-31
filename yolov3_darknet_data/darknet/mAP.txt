@@ -1,0 +1,2 @@
+{"time": "2019-07-22-07:40:12", "model": "results_no_augmentation", "iouThresh": 0.5, "titleAP": 0.9424881273264023, "buttonAP": 0.9386562630834797, "paragraphAP": 0.8933933054858688, "textinputAP": 0.7149389769821662, "headerAP": 0.9439521263050676, "mAP": 0.8866857598365969}
+{"time": "2019-07-29-11:15:45", "model": "results_augmentation", "iouThresh": 0.5, "titleAP": 0.7874546982436208, "buttonAP": 0.4819189321700089, "paragraphAP": 0.8557501182716728, "textinputAP": 0.5806783060366212, "headerAP": 0.7725020231741784, "mAP": 0.6956608155792204}

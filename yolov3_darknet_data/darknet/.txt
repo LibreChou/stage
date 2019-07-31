@@ -1,0 +1,15 @@
+JPEGImages/IMG_3003.JPG: Predicted in 1.013625 seconds.
+button: 73%
+left:1474 right:1808 top:723 bottom:940
+button: 52%
+left:1506 right:1771 top:1767 bottom:2016
+paragraph: 91%
+left:1226 right:2297 top:1157 bottom:1683
+textinput: 59%
+left:1134 right:2380 top:2622 bottom:2968
+title: 73%
+left:1095 right:2346 top:38 bottom:573
+title: 57%
+left:1151 right:2383 top:1967 bottom:2300
+title: 55%
+left:1101 right:2457 top:2236 bottom:2613

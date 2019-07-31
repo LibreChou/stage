@@ -1,0 +1,7 @@
+classes = 5
+train  = data_train.txt
+valid  = data_val.txt
+test  = data_test.txt
+names = classes.names
+backup = weights
+

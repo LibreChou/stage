@@ -1,0 +1,11 @@
+New prediction :
+button: 81%
+left:1576 right:2008 top:1508 bottom:1867
+button: 80%
+left:1716 right:1951 top:2724 bottom:3023
+paragraph: 75%
+left:1391 right:2279 top:2055 bottom:2467
+paragraph: 45%
+left:1292 right:2386 top:794 bottom:1411
+title: 85%
+left:1201 right:2470 top:96 bottom:514

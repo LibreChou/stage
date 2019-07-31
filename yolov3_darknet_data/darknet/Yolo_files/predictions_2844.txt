@@ -1,0 +1,5 @@
+New prediction :
+paragraph: 98%
+left:1487 right:2712 top:355 bottom:1023
+textinput: 100%
+left:1357 right:2575 top:2077 bottom:2595
