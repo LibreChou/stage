@@ -28,6 +28,7 @@ wget https://pjreddie.com/media/files/yolov3-tiny.weights
 5. Start the training as below, by giving the correct paths to all the files being used as arguments
 
 ```
+mkdir weights
 ./darknet detector train darknet.data yolov3-tiny-data.cfg yolov3-tiny.conv.15 > train.log
 python3 plotTrainLoss.py train.log
 ```
@@ -35,6 +36,7 @@ python3 plotTrainLoss.py train.log
 6. Evaluate your model
 
 ```
+mkdir results
 ./darknet detector valid darknet.data yolov3-tiny-data.cfg weights/yolov3-tiny-data_final.weights
 ./darknet detector recall darknet.data yolov3-tiny-data.cfg weights/yolov3-tiny-data_final.weights
 mkdir data_val
@@ -62,4 +64,17 @@ Predictions are stored in 'yolo_predictions'
 jupyter notebook YOLOProject.ipynb
 npm install -g browser-sync
 browser-sync start --server -w index.html
+```
+
+10. To augment the dataset artificially
+
+`jupyter notebook augmentation.ipynb`
+
+11. You can also augment it manually by moving new pictures to an 'Images/001' folder and then labelling them
+
+```
+sudo apt-get install python3-tk
+sudo apt-get install python3-pil python3-pil.imagetk
+mkdir Labels
+python3 labelling.py
 ```
